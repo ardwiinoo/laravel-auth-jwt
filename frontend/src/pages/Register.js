@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 function Register() {
@@ -13,6 +13,13 @@ function Register() {
   const [validation, setValidation] = useState([]);
 
   const navigate = useNavigate();
+
+  // agar user yang login gabisa ke sini
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      navigate("/home");
+    }
+  }, []);
 
   const registerHandler = async (e) => {
     e.preventDefault();
@@ -43,14 +50,17 @@ function Register() {
           <div style={{ width: "100%" }}>
             <div className="row justify-content-center">
               <div className="col-md-6">
-                <div className="card">
-                  <div className="card-header">Register</div>
+                <Link to="/" className="btn bg-warning mb-3 border-dark">
+                  Back To Home
+                </Link>
+                <div className="card border-dark">
+                  <div className="card-header border-dark">Register</div>
                   <div className="card-body">
                     <form onSubmit={registerHandler}>
                       <div className="mb-3 mt-3">
                         <input
                           type="text"
-                          className="form-control"
+                          className="form-control border-dark"
                           id="name"
                           name="name"
                           placeholder="Nama Anda"
@@ -68,7 +78,7 @@ function Register() {
                       <div className="mb-3">
                         <input
                           type="email"
-                          className="form-control"
+                          className="form-control border-dark"
                           id="email"
                           name="email"
                           placeholder="Email"
@@ -86,7 +96,7 @@ function Register() {
                       <div className="mb-3">
                         <input
                           type="password"
-                          className="form-control"
+                          className="form-control border-dark"
                           id="password"
                           name="password"
                           placeholder="Password"
@@ -104,7 +114,7 @@ function Register() {
                       <div className="mb-3">
                         <input
                           type="password"
-                          className="form-control"
+                          className="form-control border-dark"
                           id="password_confirmation"
                           name="password_confirmation"
                           placeholder="Password Confirm"
@@ -114,9 +124,15 @@ function Register() {
                           }}
                         />
                       </div>
-                      <button className="btn btn-primary" type="submit">
+                      <button
+                        className="btn btn-primary border-dark me-2"
+                        type="submit"
+                      >
                         Daftar
                       </button>
+                      <Link to="/login" className="btn btn-link">
+                        Login disini
+                      </Link>
                     </form>
                   </div>
                 </div>

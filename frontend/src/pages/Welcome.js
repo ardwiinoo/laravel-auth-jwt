@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Welcome() {
   return (
@@ -7,15 +8,23 @@ function Welcome() {
         <div style={{ width: "100%" }}>
           <div className="row justify-content-center">
             <div className="col-md-6">
-              <div className="card">
-                <div className="card-header">Welcome</div>
+              <div className="card border-dark">
+                <div className="card-header border-dark">Welcome</div>
                 <div className="card-body">
                   <h5>Laravel JWT + React</h5>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam eu bibendum mauris. Proin semper molestie ultrices.
-                    Maecenas purus lorem, dictum.
+                    Implementasi Json Web Token menggunakan Laravel dan consume
+                    token dengan React.
                   </p>
+                  <Link
+                    to="/login"
+                    className="btn btn-primary border-dark me-2"
+                  >
+                    Login
+                  </Link>
+                  <Link to="/register" className="btn btn-primary border-dark">
+                    Register
+                  </Link>
                 </div>
               </div>
             </div>
